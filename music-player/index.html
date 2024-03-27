@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Music Player</title>
+    </head>
+    <body>
+        <header class="page_header">
+            <nav class="navigation">
+                <div class="logo">
+                    <a href="#">
+                        <img src="images/logo.png" width="53" height="80">
+                    </a>
+                </div>
+                <div class="navigation_list">
+                    <a href="#home" class="navigation_title">HOME</a>
+                    <a href="#music" class="navigation_title">MUSIC</a>
+                    <a href="#about" class="navigation_title">ABOUT</a>
+                    <a href="#store" class="navigation_title">STORE</a>
+                </div>
+            </nav>
+            <div class="container_page_header">
+                <ul class="text_header_list">
+                    <li class="text_header_main">MUSIC PLAYER</li>
+                    <li class="text_header">American company formed in 2002 in Boston, Massachusetts</li>
+                </ul>
+                <div class="header_player">
+                    <img src="images/player.png" alt="Экран iphone" class="img_phone">
+                    <img src="images/kabel.png" alt="Кабель для телефона" class="img_kabel" width="350" height="162">
+                </div>
+            </div>  
+        </header>
+        <main>
+            <div id="music" class="main_page_container_music">
+                <div class="music_main_text">Music</div>
+                <div class="music_list">
+                    <button class="music_button">Listen now</button>
+                    <button class="music_button">Find a song</button>
+                </div>
+                <img src="images/music-plate.png" alt="Протянутая рука с музыкальной пластинкой" class="img_music-plate">
+            </div>
+            <div id="about" class="main_page_container_about">
+                <div class="about_main_text">About</div>
+                <p class="about_text">MusicPlayer gives you instant access to millions of songs – from old favorites to the latest hits. Just hit play to stream anything you like.</p>
+            </div>
+            <div id="store" class="main_page_container_store">
+                <div class="store_main_text">Store</div>
+                <div class="store_list">
+                    <div class="store_buttons_list">
+                        <button type="button" class="store_button_win">Download Windows x64</button>
+                        <button type="button" class="store_button_mac">Download MacOS</button>
+                    </div>
+                    <h3 class="store_question">Нужна предыдущая версия MPlayer?</h3>
+                    <p class="store_text">
+                        Вы можете скачать одну из предыдущих версий MPlayer, которая совместима с нужной вам версией операционной системы и определёнными устройствами.
+                    </p>
+                    <p><a href="#" class="store_link">Выберите предыдущую версию MPlayer</a></p>
+                </div>
+                <img src="images/macbook.png" alt="ноутбук с плеером" width="1170" height="685" class="img_macbook">
+            </div>
+        </main>
+        <footer class="page_footer">
+            <div class="footer_columns">
+                <div class="footer_column">
+                    <h4 class="footer_column_title">MPlayer Store</h4>
+                    <a href="#" class="footer_item">Варианты оплаты</a>
+                    <a href="#" class="footer_item">Состояние заказа</a>
+                    <a href="#" class="footer_item">Помощь при покупке</a>
+                </div>
+                <div class="footer_column">
+                    <h4 class="footer_column_title">Ценности MPlayer</h4>
+                    <a href="#" class="footer_item">Универсальный доступ</a>
+                    <a href="#" class="footer_item">Окружающая среда</a>
+                    <a href="#" class="footer_item">Конфиденциальность</a>
+                </div>
+                <div class="footer_column">
+                    <h4 class="footer_column_title">Учётная запись</h4>
+                    <a href="#" class="footer_item">Управление вашим MPlayer ID</a>
+                    <a href="#" class="footer_item">Учётная запись MPlayer Store</a>
+                </div>
+            </div>
+            
+            <div class="footer_row_items">
+                <a href="#" class="footer_item">© MPlayer Inc., 2024 г. Все права защищены.<div class="footer_main_title">MUSIC PLAYER</div></a>
+                <a href="#" class="footer_item">Условия использования</a>
+                <a href="#" class="footer_item">Продажа и возврат</a>
+                <a href="#" class="footer_item">Юридическая информация</a>
+            </div>
+        </footer>
+    </body>
+    <script>
+        document.querySelectorAll('a.navigation_title').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</html>
