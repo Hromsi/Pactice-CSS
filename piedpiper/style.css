@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.header {
+    background-color: #007765;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* nav-burger */
+.navbar {
+    padding: 20px 54px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__item {
+    text-decoration: none;
+    list-style-type: none;
+    height: 29px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar__item:not(:last-child) {
+    border-right: 2px solid #fff;
+}
+
+.navbar__link{
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    line-height: 28.13px;
+    text-align: center;
+    color: #fff;
+    transition: color 0.4s ease;
+}
+
+.navbar__link:hover{
+    color: #333333;
+}
+
+.navbar__logo {
+    width: 185px;
+    height: 45px;
+}
+
+/* nav-burger end*/
+
+.scroll-up {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007765;
+    border-radius: 50%;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+.scroll-up__img {
+    width: 160px;
+    height: 160px;
+}
+
+.scroll-up:hover {
+    transform: scale(1.1);
+    background-color: #029781;
+}
+
+.scroll-up:active {
+    background-color: #015145
+}
+
+.banner-main {
+    padding: 160px 15px;
+    background-image: url('images/background1.png');
+    background-size: cover;
+}
+
+.title {
+    font-family: "Roboto", sans-serif;
+    font-size: 64px;
+    line-height: 84.38px;
+    text-align: center;
+    color: #007765;
+}
+
+.title_white {
+    font-size: 72px;
+    color: #fff;
+}
+
+.title_mb-18px {
+    margin-bottom: 18px;
+}
+
+.section {
+    background-color: #EEEEEE;
+    padding: 48px 54px 92px 54px;
+    display: flex;
+    justify-content: center;
+}
+
+.section_white {
+    background-color: #fff;
+}
+
+.section__container {
+    max-width: 1110px;
+    width: 100%;
+}
+
+.text {
+    font-family: "Roboto", sans-serif;
+    font-size: 32px;
+    line-height: 37.5px;
+}
+
+.text_margin-bottom {
+    margin-bottom: 37px;
+}
+
+.banner-collaboration {
+    padding: 128px 55px;
+    background-image: url('images/background2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-collaboration__text {
+    max-width: 893px;
+    font-family: "Roboto", sans-serif;
+    font-size: 48px;
+    font-style: italic;
+    line-height: 56.25px;
+    text-align: center;
+    color: #fff;
+}
+
+.piedpipercoin-description {
+    display: flex;
+    gap: 38px;
+}
+
+.logo-piedpipercoin {
+    width: 115px;
+    height: 115px;
+    float: left;
+    margin-right: 20px;
+}
+
+.members {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.member {
+    text-align: center;
+    flex-basis: 33.33333%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.member__img {
+    width: 168px;
+    height: 168px;
+    margin-bottom: 12px;
+}
+
+.member__name {
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+    line-height: 28.13px;
+    color: #007765;
+}
+
+.member__role {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 21.09px;
+    color: #000;
+}
+
+.footer {
+    padding: 48px 20px 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+}
+
+.footer__container {
+    max-width: 540px;
+    width: 100%;
+}
+
+.footer__text {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    line-height: 21.09px;
+    text-align: center;
+    color: #fff;
+}
+
+.float-left {
+    float: left;
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 30px 54px 55px 54px;
+    }
+
+    .title {
+        font-size: 44px;
+        line-height: 54px;
+    }
+
+    .text {
+        font-size: 22px;
+        line-height: 27.5px;
+    }
+
+    .text_margin-bottom {
+        margin-bottom: 25px;
+    }
+
+    .banner-main {
+        padding: 104px 15px;
+    }
+    
+    .banner-collaboration {
+        padding: 83px 30px;
+    }
+
+    .banner-collaboration__text {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .piedpipercoin-description {
+        display: inline;
+        gap: 0px;
+    }
+
+    .logo-piedpipercoin {
+        width: 75px;
+        height: 75px;
+    }
+
+    /* nav-burger */
+    .navbar__menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar__menu.active {
+        left: 0;
+        background-color: #007765;
+    }
+
+    .navbar__item {
+        margin: 1.5rem 0;
+    }
+
+    .navbar__item:not(:last-child) {
+        border-right: none;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        -webkit-transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        -webkit-transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .scroll-up__img {
+        width: 125px;
+        height: 125px;
+    }
+}
+
+@media (max-width: 500px) {
+    .section {
+        padding: 30px 28px 55px 30px;
+    }
+
+    .title {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .text {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .text_margin-bottom {
+        margin-bottom: 16px;
+    }
+
+    .scroll-up__img {
+        width: 95px;
+        height: 95px;
+    }
+}
