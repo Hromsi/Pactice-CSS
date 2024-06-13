@@ -39,7 +39,7 @@ a {
     align-items: center;
 }
 
-.hamburger {
+.burger {
     display: none;
 }
 
@@ -93,6 +93,7 @@ a {
 
 .scroll-up {
     position: fixed;
+    display: none;
     bottom: 20px;
     right: 20px;
     background-color: #007765;
@@ -322,21 +323,21 @@ a {
         border-right: none;
     }
 
-    .hamburger {
+    .burger {
         display: block;
         cursor: pointer;
     }
 
-    .hamburger.active .bar:nth-child(2) {
+    .burger.active .bar:nth-child(2) {
         opacity: 0;
     }
 
-    .hamburger.active .bar:nth-child(1) {
+    .burger.active .bar:nth-child(1) {
         -webkit-transform: translateY(8px) rotate(45deg);
         transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .bar:nth-child(3) {
+    .burger.active .bar:nth-child(3) {
         -webkit-transform: translateY(-8px) rotate(-45deg);
         transform: translateY(-8px) rotate(-45deg);
     }

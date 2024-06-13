@@ -1,19 +1,19 @@
 
 // Navbar script
-const hamburger = document.querySelector(".hamburger");
+const burger = document.querySelector(".burger");
 const navMenu = document.querySelector(".navbar__menu");
 const navLink = document.querySelectorAll(".navbar__link");
 
-hamburger.addEventListener("click", mobileMenu);
+burger.addEventListener("click", mobileMenu);
 navLink.forEach(n => n.addEventListener("click", closeMenu));
 
 function mobileMenu() {
-    hamburger.classList.toggle("active");
+    burger.classList.toggle("active");
     navMenu.classList.toggle("active");
 }
 
 function closeMenu() {
-    hamburger.classList.remove("active");
+    burger.classList.remove("active");
     navMenu.classList.remove("active");
 }
 
