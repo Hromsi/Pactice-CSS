@@ -8,13 +8,17 @@
 }
 
 body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.main {
     background: rgb(86,18,91);
     background: linear-gradient(339deg, rgb(149, 50, 156) 0%, rgb(51, 0, 117) 100%);
-    min-height: 100vh;
+    padding: 60px 30px;
     display: flex;
     justify-content: center;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
 }
 
 .title {
@@ -25,21 +29,23 @@ body {
 
 .card {
     margin: auto;
-    padding: 70px;
-    height: auto;
+    padding: 70px 50px;
+    max-width: 620px;
+    width: 100%;
     border-radius: 10px; 
     background-color: #401fab;
     display: flex;
-    justify-content: center;
+    align-items: center;
     text-align: center;
     flex-direction: column;
-    gap: 100px;
+    gap: 80px;
     box-shadow: 25px 25px 50px #fdc648;
 }
 
 .card__list-links {
     display: flex;
-    width: 480px;
+    width: 100%;
+    max-width: 480px;
     flex-direction: column;
     gap: 50px;
 }
@@ -81,16 +87,16 @@ body {
     margin-right: 45px;
 }
 
-  span {
+span {
     transform: skewX(15deg) 
-  }
+}
 
-  span:nth-child(2) {
+span:nth-child(2) {
     width: 20px;
     margin-left: 30px;
     position: relative;
     top: 12%;
-  }
+}
   
 /**************SVG****************/
 
@@ -116,4 +122,35 @@ path.two {
 .cta:hover path.two {
     transform: translateX(0%);
  
+}
+
+
+@media (max-width: 747px) {
+    .card {
+        padding: 40px 25px;
+        gap: 50px;
+        max-width: 300px;
+    }
+
+    .card__list-links {
+        gap: 35px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .cta {
+        padding: 5px 15px;
+        font-size: 18px;
+    }
+
+    .cta:hover  span:nth-child(2) {
+        margin-right: 25px;
+    }
+
+    .wrapper svg {
+        width: 30px;
+        height: 19px;
+    }
 }
