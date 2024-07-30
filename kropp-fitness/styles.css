@@ -23,211 +23,219 @@
 }
 
 /**
-  Нормализация блочной модели
- */
- *,
- *::before,
- *::after {
-   box-sizing: border-box;
- }
- 
- /**
-   Убираем внутренние отступы слева тегам списков,
-   у которых есть атрибут class
+Нормализация блочной модели
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+*/
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+*/
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+*/
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+*/
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+*/
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+*/
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями
+*/
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+*/
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
   */
- :where(ul, ol):where([class]) {
-   padding-left: 0;
- }
- 
- /**
-   Убираем внешние отступы body и двум другим тегам,
-   у которых есть атрибут class
+  height: 100%;
+  /**
+    Плавный скролл
   */
- body,
- :where(blockquote, figure):where([class]) {
-   margin: 0;
- }
- 
- /**
-   Убираем внешние отступы вертикали нужным тегам,
-   у которых есть атрибут class
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
   */
- :where(
-   h1,
-   h2,
-   h3,
-   h4,
-   h5,
-   h6,
-   p,
-   ul,
-   ol,
-   dl
- ):where([class]) {
-   margin-block: 0;
- }
- 
- :where(dd[class]) {
-   margin-left: 0;
- }
- 
- :where(fieldset[class]) {
-   margin-left: 0;
-   padding: 0;
-   border: none;
- }
- 
- /**
-   Убираем стандартный маркер маркированному списку,
-   у которого есть атрибут class
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
   */
- :where(ul[class]) {
-   list-style: none;
- }
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+*/
+svg *[fill] { fill: currentColor }
+svg *[stroke] { stroke: currentColor }
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+*/
+svg * {
+  transition-property: fill, stroke;
+}
  
- /**
-   Обнуляем вертикальные внешние отступы параграфа,
-   объявляем локальную переменную для внешнего отступа вниз,
-   чтобы избежать взаимодействие с более сложным селектором
-  */
- p {
-   --paragraphMarginBottom: 24px;
- 
-   margin-block: 0;
- }
- 
- /**
-   Внешний отступ вниз для параграфа без атрибута class,
-   который расположен не последним среди своих соседних элементов
-  */
- p:where(:not([class]):not(:last-child)) {
-   margin-bottom: var(--paragraphMarginBottom);
- }
- 
- 
- /**
-   Упрощаем работу с изображениями
-  */
- img {
-   display: block;
-   max-width: 100%;
- }
- 
- /**
-   Наследуем свойства шрифт для полей ввода
-  */
- input,
- textarea,
- select,
- button {
-   font: inherit;
- }
- 
- html {
-   /**
-     Пригодится в большинстве ситуаций
-     (когда, например, нужно будет "прижать" футер к низу сайта)
-    */
-   height: 100%;
-   /**
-     Плавный скролл
-    */
-   scroll-behavior: smooth;
- }
- 
- body {
-   /**
-     Пригодится в большинстве ситуаций
-     (когда, например, нужно будет "прижать" футер к низу сайта)
-    */
-   min-height: 100%;
-   /**
-     Унифицированный интерлиньяж
-    */
-   line-height: 1.5;
- }
- 
- /**
-   Приводим к единому цвету svg-элементы
-  */
- svg *[fill] { fill: currentColor }
- svg *[stroke] { stroke: currentColor }
- 
- /**
-   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
-  */
- svg * {
-   transition-property: fill, stroke;
- }
- 
- /**
-   Удаляем все анимации и переходы для людей,
-   которые предпочитают их не использовать
-  */
- @media (prefers-reduced-motion: reduce) {
-   * {
-     animation-duration: 0.01ms !important;
-     animation-iteration-count: 1 !important;
-     transition-duration: 0.01ms !important;
-     scroll-behavior: auto !important;
-   }
- }
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
- :root {
-    --color-dark: #000000;
-    --color-dark-alternate: #131619;
-    --color-light: #FFFFFF;
-    --color-dark-gray: #404040;
-    --color-light-gray: #C4C4C4;
+:root {
+  --color-dark: #000000;
+  --color-dark-alternate: #131619;
+  --color-light: #FFFFFF;
+  --color-dark-gray: #404040;
+  --color-light-gray: #C4C4C4;
 
-    --border-radius: 30px;
-    --border: 1px solid var(--color-light);
+  --border-radius: 30px;
+  --border: 1px solid var(--color-light);
 
-    --font-family-base: 'Heebo', sans-serif;
-    --font-family-accent: 'Yantramanav', sans-serif;
+  --font-family-base: 'Heebo', sans-serif;
+  --font-family-accent: 'Yantramanav', sans-serif;
 
-    --input-height: 54px;
+  --input-height: 54px;
 
-    --container-width: 1300px;
-    --container-padding-x: 15px;
+  --container-width: 1300px;
+  --container-padding-x: 15px;
 
-    --transition-duration: 0.2s;
+  --transition-duration: 0.2s;
 
-    --header-height: 90px;
- }
+  --header-height: 90px;
+}
 
- body {
-    font-family: var(--font-family-base);
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.75;
-    color: var(--color-light-gray);
-    background-color: var(--color-dark);
- }
+body {
+  font-family: var(--font-family-base);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-light-gray);
+  background-color: var(--color-dark);
+}
 
- a,
- button,
- input,
- textarea,
- svg * {
-    transition-duration: var(--transition-duration);
- }
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
 
- a {
-    color: var(--color-light)
- }
+a {
+  color: var(--color-light)
+}
 
- a:hover {
-    color: var(--color-light-gray)
- }
+a:hover {
+  color: var(--color-light-gray)
+}
 
- .container {
-    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
-    margin-inline: auto;
-    padding-inline: var(--container-padding-x);
- }
+p {
+  margin-block: 0;
+}
 
- .visually-hidden {
+p:not([class]):not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
   position: absolute !important;
   width: 1px !important;
   height: 1px !important;
@@ -240,104 +248,164 @@
   overflow: hidden !important;
 }
  
- h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    text-transform: uppercase;
- }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
- .button {
-    display: inline-flex;
-    align-items: center;
-    height: 38px;
-    padding-inline: 26px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 2;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: var(--color-light);
-    border: none;
-    border-radius: var(--border-radius);
- }
+.title-medium {
+  font-size: clamp(20px, 2.08vw, 40px);
+  line-height: 1.3;
+  color: var(--color-light);
+}
 
- .button:hover {
-    background-color: var(--color-light-gray);
- }
+.backdrop-title {
+  position: relative;
+  z-index: 2;
+}
 
- .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 20px;
-    min-height: var(--header-height);
-    padding-inline: 32px;
-    background-color: var(--color-dark-alternate);
- }
+.backdrop-title::before {
+  content: '';
+  display: block;
+  position: absolute;
+  right: calc(100% + 8px);
+  width: 26px;
+  aspect-ratio: 1;
+  background: url('./icons/plus.svg') center/contain no-repeat;
+}
 
- .header-logo {
-    flex-shrink: 0;
- }
+.backdrop-title::after {
+  content: attr(data-title);
+  font-family: var(--font-family-accent);
+  position: absolute;
+  z-index: -1;
+  top: -0.30em;
+  left: -0.65em;
+  font-size: 2.8em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-dark-gray);
+  text-stroke: 1px var(--color-dark-gray);
+}
 
- .header-menu-list {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 50px;
- }
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding-inline: 26px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: var(--color-light);
+  border: none;
+  border-radius: var(--border-radius);
+}
 
- .header-menu-link {
-    display: inline-flex;
-    align-items: center;
-    column-gap: 7px;
-    height: var(--header-height);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 1.2px;
- }
+.button:hover {
+  background-color: var(--color-light-gray);
+}
 
- .header-menu-link.is-current::after {
-    content: "";
-    width: 5px;
-    aspect-ratio: 1;
-    background-color: currentColor;
-    border-radius: 50%;
- }
+.button.transparent {
+  position: relative;
+  height: var(--input-height);
+  padding-left: 31px;
+  padding-right: 80px;
+  background-color: transparent;
+  border: var(--border);
+}
 
- .header-actions {
-    display: flex;
-    column-gap: 40px;
- }
+.button.transparent::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  height: 100%;
+  aspect-ratio: 1;
+  background: url('./icons/arrow-top-right.svg') center/70% no-repeat; 
+  border: var(--border);
+  border-radius: 50%;
+}
 
- .header-burger-button {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 4px;
-    width: 40px;
-    aspect-ratio: 1;
-    padding-left: 8px;
-    color: var(--color-light);
-    background-color: transparent;
-    border: var(--border);
-    border-radius: 50%;
- }
+.button.transparent:hover {
+  color: var(--color-dark);
+  background-color: var(--color-light-gray);
+}
 
- .header-burger-button:hover {
-    color: var(--color-light-gray);
-    border-color: currentColor;
- }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  min-height: var(--header-height);
+  padding-inline: 32px;
+  background-color: var(--color-dark-alternate);
+}
 
- .header-burger-button-line {
-    width: 6px;
-    height: 1px;
-    background-color: currentColor;
-    box-shadow: 16px 0 0 currentColor;
- }
+.header-logo {
+  flex-shrink: 0;
+}
 
- .banner {
+.header-menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 50px;
+}
+
+.header-menu-link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 7px;
+  height: var(--header-height);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+}
+
+.header-menu-link.is-current::after {
+  content: "";
+  width: 5px;
+  aspect-ratio: 1;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.header-actions {
+  display: flex;
+  column-gap: 40px;
+}
+
+.header-burger-button {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 4px;
+  width: 40px;
+  aspect-ratio: 1;
+  padding-left: 8px;
+  color: var(--color-light);
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 50%;
+}
+
+.header-burger-button:hover {
+  color: var(--color-light-gray);
+  border-color: currentColor;
+}
+
+.header-burger-button-line {
+  width: 6px;
+  height: 1px;
+  background-color: currentColor;
+  box-shadow: 16px 0 0 currentColor;
+}
+
+.banner {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -345,119 +413,185 @@
   padding: 36px 70px;
   color: var(--color-light);
   background-color: var(--color-dark-alternate);
- }
+}
 
- .banner-body {
+.banner-body {
   text-transform: uppercase;
- }
+}
 
- .banner-info {
+.banner-info {
   display: flex;
   align-items: end;
   font-size: clamp(16px, 1.56vw, 30px);
   line-height: 1.27;
   font-weight: 700;
- }
+}
 
- .banner-info::before {
+.banner-info::before {
   content: '';
   width: clamp(60px, 10.1vw, 194px);
   aspect-ratio: 1;
   margin-right: 30px;
   background: url('./icons/bold-arrow-down-right.svg') center/contain no-repeat;
- }
+}
 
- .banner-title {
+.banner-title {
   font-size: min(18.75vw, 360px);
   line-height: 1;
- }
+}
 
- .banner-pagination-list {
+.banner-pagination-list {
   display: flex;
   justify-content: center;
- }
+}
 
- .banner-pagination-item {
+.banner-pagination-item {
   display: flex;
- }
+}
 
- .banner-pagination-button {
+.banner-pagination-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 7px;
   background-color: transparent;
   border: none;
- }
+}
 
- .banner-pagination-button::after {
+.banner-pagination-button::after {
   content: '';
   width: 10px;
   aspect-ratio: 1;
   border: var(--border);
   border-radius: 50%;
   transition-duration: var(--transition-duration);
- }
+}
 
- .banner-pagination-button.is-current::after {
+.banner-pagination-button.is-current::after {
   background-color: var(--color-light);
- }
+}
 
- .banner-pagination-button:not(.is-current):hover::after {
+.banner-pagination-button:not(.is-current):hover::after {
   border-color: var(--color-light-gray);
- }
+}
 
- @media (max-width: 1024px) {
-    .header {
-        flex-wrap: wrap;
-        row-gap: 10px;
-        padding-top: 20px;
-    }
+.motivation-item:nth-child(even) {
+  background-color: var(--color-dark-alternate);
+}
 
-    .header,
-    .banner {
-      padding-inline: 15px;
+.motivation-item:nth-child(even) .motivation-card{
+  flex-direction: row-reverse;
+}
+
+.motivation-card {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  column-gap: clamp(30px, 10.42vw, 200px)
+}
+
+.motivation-card-image {
+  margin-block: -60px
+}
+
+.motivation-card-body {
+  padding-left: 35px;
+}
+
+.motivation-card-title:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.motivation-card-description {
+  max-width: 400px;
+}
+
+.motivation-card-description:not(:last-child) {
+  margin-bottom: 37px;
+}
+
+@media (max-width: 1919px) {
+  .motivation-card-image {
+    margin-block: -20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+      flex-wrap: wrap;
+      row-gap: 10px;
+      padding-top: 20px;
   }
 
-    .header-menu {
-        order: 1;
-        flex-basis: 100%;
-    }
+  .header,
+  .banner {
+    padding-inline: 15px;
+}
 
-    .header-menu-link {
-        height: 50px;
-    }
+  .header-menu {
+      order: 1;
+      flex-basis: 100%;
+  }
 
-    .banner {
-      row-gap: 10px;
-    }
- }
+  .header-menu-link {
+      height: 50px;
+  }
 
- @media (max-width: 767px) {
-    .button {
-        padding-inline: 18px;
-    }
+  .banner {
+    row-gap: 10px;
+  }
 
-    .header {
-        padding-top: 10px;
-    }
+  .motivation-card {
+    padding-block: 50px;
+  }
 
-    .header-menu-list {
-        column-gap: 24px;
-    }
+  .motivation-card-image {
+    max-width: 30%;
+    height: auto;
+    margin-block: 0;
+  }
+}
 
-    .header-menu-link {
-        height: 32px;
-    }
+@media (max-width: 767px) {
+  .button {
+      padding-inline: 18px;
+  }
 
-    .header-actions {
-        column-gap: 15px;
-    }
+  .header {
+      padding-top: 10px;
+  }
 
-    /* .banner-info {
-      margin-bottom: 5px;
-    } */
-    .banner-info::before {
-      margin-right: 10px;
-    }
- }
+  .header-menu-list {
+      column-gap: 24px;
+  }
+
+  .header-menu-link {
+      height: 32px;
+  }
+
+  .header-actions {
+      column-gap: 15px;
+  }
+
+  .banner-info::before {
+    margin-right: 10px;
+  }
+
+  .motivation-card,
+  .motivation-item:nth-child(even) .motivation-card {
+    flex-direction: column-reverse;
+  }
+
+  .motivation-card {
+    row-gap: 30px;
+    padding-block: 30px;
+  }
+
+  .motivation-card-image {
+    max-width: 60%;
+  }
+
+  .motivation-card-description {
+    margin-bottom: 20px;
+  }
+}
