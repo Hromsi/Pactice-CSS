@@ -179,6 +179,7 @@ svg * {
   --color-light: #FFFFFF;
   --color-dark-gray: #404040;
   --color-light-gray: #C4C4C4;
+  --focus-background-color: #b9b9b938;
 
   --border-radius: 30px;
   --border: 1px solid var(--color-light);
@@ -341,7 +342,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .button.transparent:hover {
   color: var(--color-dark);
-  background-color: var(--color-light-gray);
+  background-color: var(--focus-background-color);
+  border-color: var(--color-light-gray);
 }
 
 .input {
@@ -363,9 +365,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .input:focus {
-  color: var(--color-dark);
-  background-color: var(--color-light-gray);
+  background-color: var(--focus-background-color);
   outline: none;
+}
+
+.input:focus::placeholder {
+  color: var(--color-dark);
 }
 
 .header {
@@ -622,9 +627,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .join-us-video-play-button:hover {
+  color: var(--color-light-gray);
   color: var(--color-dark);
-  background-color: var(--color-light-gray);
+  background-color: var(--focus-background-color);
   cursor: pointer;
+  border-color: var(--color-light-gray);
 }
 
 .join-us-video-play-button:hover::after {
